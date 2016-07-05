@@ -4,7 +4,7 @@
   "description": "",
   "main": "matrix.js",
   "scripts": {
-    "test": "mocha matrix_test.js"
+    "test": "mocha *_test.js"
   },
   "author": "",
   "license": "ISC",
