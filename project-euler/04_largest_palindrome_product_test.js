@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const largestPalindromeProduct = require('./largest_palindrome_product').largestPalindromeProduct
+const largestPalindromeProduct = require('./04_largest_palindrome_product').largestPalindromeProduct
 
 /*
 Largest palindrome product

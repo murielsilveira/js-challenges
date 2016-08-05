@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const largestPrimeFactor = require('./largest_prime_factor').largestPrimeFactor
+const largestPrimeFactor = require('./03_largest_prime_factor').largestPrimeFactor
 
 /*
 Largest prime factor

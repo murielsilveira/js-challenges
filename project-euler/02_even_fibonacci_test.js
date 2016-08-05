@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const sum = require('./even_fibonacci')
+const sum = require('./02_even_fibonacci')
 
 /*
 Even Fibonacci numbers

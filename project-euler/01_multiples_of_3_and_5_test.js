@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const sum = require('./multiples_of_3_and_5')
+const sum = require('./01_multiples_of_3_and_5')
 
 /*
 Multiples of 3 and 5
