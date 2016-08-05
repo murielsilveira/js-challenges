@@ -6,9 +6,9 @@ function largestPrimeFactor(num, divisor=2) {
   const square = (val) => Math.pow(val, 2)
   const isNotDivisible = (val, div) => val % div !== 0
 
-  console.log('num', 'divisor','num % divisor', 'square(divisor)')
+  // console.log('num', 'divisor','num % divisor', 'square(divisor)')
   while (isNotDivisible(num, divisor) && square(divisor) <= num) {
-    console.log(num, divisor, num % divisor, square(divisor))
+    // console.log(num, divisor, num % divisor, square(divisor))
     divisor++
   }
 
