@@ -1,17 +1,20 @@
 'use strict'
 
-function largestPrimeFactor(num) {
+function largestPrimeFactor(num, divisor=2) {
   // http://stackoverflow.com/questions/23287/largest-prime-factor-of-a-number/36360681#36360681
-  let divisor = 2
-  let square = (val) => Math.pow(val, 2)
+  if (num < 0) num = num * -1
+  const square = (val) => Math.pow(val, 2)
+  const isNotDivisible = (val, div) => val % div !== 0
 
-  while (num % divisor !== 0 && square(divisor) <= num) {
-      divisor++
+  console.log('num', 'divisor','num % divisor', 'square(divisor)')
+  while (isNotDivisible(num, divisor) && square(divisor) <= num) {
+    console.log(num, divisor, num % divisor, square(divisor))
+    divisor++
   }
 
   return square(divisor) <= num
-      ? largestPrimeFactor(num / divisor, divisor)
-      : num
+    ? largestPrimeFactor(num / divisor, divisor)
+    : num
 }
 
 exports.largestPrimeFactor = largestPrimeFactor

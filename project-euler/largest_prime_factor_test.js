@@ -10,6 +10,22 @@ What is the largest prime factor of the number 600851475143 ?
 */
 
 describe('largestPrimeFactor', function() {
+  it('of -13195', function() {
+    assert.equal(29, largestPrimeFactor(-13195))
+  })
+
+  it('of -1', function() {
+    assert.equal(1, largestPrimeFactor(-1))
+  })
+
+  it('of 0', function() {
+    assert.equal(0, largestPrimeFactor(0))
+  })
+
+  it('of 1', function() {
+    assert.equal(1, largestPrimeFactor(1))
+  })
+
   it('of 2', function() {
     assert.equal(2, largestPrimeFactor(2))
   })
@@ -24,6 +40,10 @@ describe('largestPrimeFactor', function() {
 
   it('of 7', function() {
     assert.equal(7, largestPrimeFactor(7))
+  })
+
+  it('of 10', function() {
+    assert.equal(5, largestPrimeFactor(10))
   })
 
   it('of 13195', function() {
