@@ -20,7 +20,7 @@ describe('largestPalindromeProduct', function() {
   })
 
   it('3 digits', function() {
-    this.timeout(10000);
+    this.timeout(10000)
     assert.equal(906609, largestPalindromeProduct(3))
   })
 })
