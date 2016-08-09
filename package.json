@@ -4,12 +4,15 @@
   "description": "",
   "main": "matrix.js",
   "scripts": {
-    "test": "mocha *_test.js **/*_test.js"
+    "test": "mocha *_test.js **/*_test.js",
+    "coverage": "istanbul cover _mocha -- -R spec *_test.js **/*_test.js && codecov"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "istanbul": "^0.4.4",
     "mocha": "^2.5.3"
   }
 }
