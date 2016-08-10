@@ -42,7 +42,7 @@ describe('isPrime', function() {
   })
 
   it('9007199254740881 is prime', function() {
-    this.timeout(10000)
+    this.timeout(20000)
     assert.isTrue(isPrime(9007199254740881))
   })
 })
