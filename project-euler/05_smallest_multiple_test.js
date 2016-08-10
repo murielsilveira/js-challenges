@@ -17,7 +17,7 @@ describe('smallestMultiple', function() {
   })
 
   it('1 to 20', function() {
-    this.timeout(50000)
+    this.timeout(60000)
     assert.equal(232792560, smallestMultiple(20))
   })
 })
