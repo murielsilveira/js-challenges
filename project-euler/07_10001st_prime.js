@@ -15,7 +15,22 @@ function isPrime(number) {
 }
 
 function getNthPrime(nth) {
+  if (nth < 1)
+    return
 
+  let primeCandidate = 2
+  let position = 0
+
+  while (true) {
+    if (isPrime(primeCandidate)) {
+      position++
+      if (position === nth)
+        break
+    }
+    primeCandidate++
+  }
+
+  return primeCandidate
 }
 
 module.exports = {
