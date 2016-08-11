@@ -16,6 +16,7 @@ Find the product abc.
 
 describe('specialPythagoreanTriplet', function() {
   it('200 375 425', function() {
+    this.timeout(5000)
     let {a, b, c} = specialPythagoreanTriplet()
 
     assert.isTrue(a < b)
