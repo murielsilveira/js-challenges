@@ -2,10 +2,10 @@
 
 function sparseArrays(input) {
   const inputArray = input.split('\n')
-  const n = Number(inputArray[0])
-  const strings = inputArray.slice(1, n + 1)
-  const q = Number(inputArray[n + 1])
-  const queries = inputArray.slice(n + 2, n + 2 + q)
+  const numStrings = Number(inputArray[0])
+  const strings = inputArray.slice(1, numStrings + 1)
+  const numQueries = Number(inputArray[numStrings + 1])
+  const queries = inputArray.slice(numStrings + 2, numStrings + 2 + numQueries)
 
   let answser = []
 
