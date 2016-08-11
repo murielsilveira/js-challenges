@@ -15,15 +15,15 @@ function dynamicArray(input) {
 
   queries.forEach(function(query){
     if (query.type === 1) {
-      let seqIndex = (xor(query.x, lastAns) % n)
+      let seqIndex = xor(query.x, lastAns) % n
       seqList[seqIndex].push(query.y)
     }
 
     if (query.type === 2) {
-      let seqIndex = (xor(query.x, lastAns) % n)
+      let seqIndex = xor(query.x, lastAns) % n
       let seq = seqList[seqIndex]
       let size = seq.length
-      let listIndex = (query.y % size)
+      let listIndex = query.y % size
       lastAns = seq[listIndex]
       // console.log(lastAns)
       answers.push(lastAns)
@@ -51,6 +51,7 @@ function emptyList() {
 }
 
 function xor(a, b) {
+  // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators
   return a ^ b
 }
 

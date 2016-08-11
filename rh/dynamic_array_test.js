@@ -1,6 +1,8 @@
 const assert = require('chai').assert
 const dynamicArray = require('./dynamic_array').dynamicArray
 
+// https://www.hackerrank.com/challenges/dynamic-array
+
 describe('dynamicArray', function() {
   it('first sample', function() {
     const input =
