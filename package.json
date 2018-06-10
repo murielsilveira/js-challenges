@@ -1,18 +1,15 @@
 {
-  "name": "matrix",
-  "version": "1.0.0",
-  "description": "",
-  "main": "matrix.js",
+  "name": "js-challenges",
+  "description": "JS playground to test ideas, algorithms and practice",
+  "license": "ISC",
   "scripts": {
     "test": "mocha *_test.js **/*_test.js",
     "coverage": "istanbul cover _mocha -- -R spec *_test.js **/*_test.js && codecov"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "codecov": "^1.0.1",
-    "istanbul": "^0.4.4",
-    "mocha": "^2.5.3"
+    "chai": "^4.1.2",
+    "codecov": "^3.0.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0"
   }
 }
