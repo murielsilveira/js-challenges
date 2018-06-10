@@ -123,7 +123,7 @@
         audioElem.addEventListener('play', (event) => {
           keys[event.target.dataset.key].classList.add('playing')
         })
-        audioElem.addEventListener('pause', () => {
+        audioElem.addEventListener('pause', (event) => {
           keys[event.target.dataset.key].classList.remove('playing')
         })
       })
