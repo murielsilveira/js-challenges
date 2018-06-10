@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100vw;
+      background: url(./images/background.jpeg) center center;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      color: rgba(0,0,0,0.8);
+      position: relative;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .keys {
+      height: 100%;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .key {
+      margin: 10px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      text-align: center;
+      flex: 1;
+      transform: all 0.07s ease;
+    }
+
+    .key-code {
+      margin-bottom: 2px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .key-sound {
+      color: #ffc600;
+    }
+
+    .key.playing {
+      transform: scale(1.1);
+      border-color: #ffc600;
+      box-shadow: 0 0 1rem #ffc600;
+    }
+
+    .credits {
+      font-size: 13px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 20px;
+    }
+    
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="keys"></div>
+  <audio data-sound="clap" src="./sounds/clap.wav"></audio>
+  <audio data-sound="hihat" src="./sounds/hihat.wav"></audio>
+  <audio data-sound="kick" src="./sounds/kick.wav"></audio>
+  <audio data-sound="openhat" src="./sounds/openhat.wav"></audio>
+  <audio data-sound="boom" src="./sounds/boom.wav"></audio>
+  <audio data-sound="ride" src="./sounds/ride.wav"></audio>
+  <audio data-sound="snare" src="./sounds/snare.wav"></audio>
+  <audio data-sound="tom" src="./sounds/tom.wav"></audio>
+  <audio data-sound="tink" src="./sounds/tink.wav"></audio>
+  <div class="credits">
+    Photo by <a href="https://unsplash.com/photos/3GPU7euU9gA" target="_blank" rel="noopener noreferrer">Bry Ulrick</a> on <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>
+  </div>
+
+  <script>
+    function loadDrum() {
+      const controls = [
+        { code: '65', key: 'a' },
+        { code: '83', key: 's' },
+        { code: '68', key: 'd' },
+        { code: '70', key: 'f' },
+        { code: '71', key: 'g' },
+        { code: '72', key: 'h' },
+        { code: '74', key: 'j' },
+        { code: '75', key: 'k' },
+        { code: '76', key: 'l' },
+      ]
+      const audios = {}
+      const keys = {}
+      const fragment = document.createDocumentFragment()
+      document.querySelectorAll('audio').forEach((audioElem, index) => {
+        const { code, key } = controls[index]
+        const sound = audioElem.dataset.sound
+
+        const div = document.createElement('div')
+        div.classList.add('key')
+        div.dataset.code = code
+        div.innerHTML = `
+          <div class="key-code">${key}</div>
+          <div class="key-sound">${sound}</div>
+        `
+        fragment.appendChild(div)
+        
+        keys[code] = div
+        audios[code] = audioElem
+        audioElem.dataset.code = code
+        
+        audioElem.addEventListener('play', (event) => {
+          keys[event.target.dataset.code].classList.add('playing')
+        })
+        audioElem.addEventListener('pause', () => {
+          keys[event.target.dataset.code].classList.remove('playing')
+        })
+      })
+      document.querySelector('.keys').appendChild(fragment)
+
+      document.body.addEventListener('keydown', (event) => {
+        if (audios[event.keyCode]) {
+          if (!audios[event.keyCode].paused) {
+            audios[event.keyCode].pause()
+            audios[event.keyCode].currentTime = 0
+          }
+          audios[event.keyCode].play()
+        }
+      })
+      document.body.focus()
+    }
+    
+    loadDrum()
+  </script>
+</body>
+</html>
