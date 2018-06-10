@@ -105,38 +105,37 @@
       const fragment = document.createDocumentFragment()
       document.querySelectorAll('audio').forEach((audioElem, index) => {
         const key = controls[index]
-        const keyCode = key.toUpperCase().charCodeAt(0)
         const sound = audioElem.dataset.sound
 
         const div = document.createElement('div')
         div.classList.add('key')
-        div.dataset.code = keyCode
+        div.dataset.key = key
         div.innerHTML = `
           <div class="key-code">${key}</div>
           <div class="key-sound">${sound}</div>
         `
         fragment.appendChild(div)
         
-        keys[keyCode] = div
-        audios[keyCode] = audioElem
-        audioElem.dataset.keyCode = keyCode
+        keys[key] = div
+        audios[key] = audioElem
+        audioElem.dataset.key = key
         
         audioElem.addEventListener('play', (event) => {
-          keys[event.target.dataset.keyCode].classList.add('playing')
+          keys[event.target.dataset.key].classList.add('playing')
         })
         audioElem.addEventListener('pause', () => {
-          keys[event.target.dataset.keyCode].classList.remove('playing')
+          keys[event.target.dataset.key].classList.remove('playing')
         })
       })
       document.querySelector('.keys').appendChild(fragment)
 
       document.body.addEventListener('keydown', (event) => {
-        if (audios[event.keyCode]) {
-          if (!audios[event.keyCode].paused) {
-            audios[event.keyCode].pause()
-            audios[event.keyCode].currentTime = 0
+        if (audios[event.key]) {
+          if (!audios[event.key].paused) {
+            audios[event.key].pause()
+            audios[event.key].currentTime = 0
           }
-          audios[event.keyCode].play()
+          audios[event.key].play()
         }
       })
       document.body.focus()
