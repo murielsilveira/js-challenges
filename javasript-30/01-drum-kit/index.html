@@ -132,7 +132,6 @@
       document.body.addEventListener('keydown', (event) => {
         if (audios[event.key]) {
           if (!audios[event.key].paused) {
-            audios[event.key].pause()
             audios[event.key].currentTime = 0
           }
           audios[event.key].play()
